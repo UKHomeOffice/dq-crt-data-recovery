@@ -24,9 +24,9 @@ spec:
           - mountPath: /mnt/pvc-jira-crt
             name: pvc-jira-crt
           - mountPath: /mnt/dpvc-jira-crt2
-            name: dpvc-jira-crt2rt
+            name: pvc-jira-crt2rt
           - mountPath: /mnt/pvc-jira-dc-crtt
-            name: pvc-jira-dc-crt                      
+            name: pvc-jira-dc-crt
       volumes:
         - name: pvc-jira-crt
           persistentVolumeClaim:
