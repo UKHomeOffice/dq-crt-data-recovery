@@ -13,6 +13,8 @@ pipeline:
     environment:
       - KUBE_NAMESPACE=dq-apps-notprod
     commands:
+      - export KUBE_TOKEN=$$NOTPROD_KUBE_TOKEN
+      - export KUBE_SERVER=$$NOTPROD_KUBE_SERVER
       - kd -f deployment.yml
     secrets:
       - NOTPROD_KUBE_TOKEN
@@ -25,6 +27,8 @@ pipeline:
     environment:
       - KUBE_NAMESPACE=dq-apps-prod
     commands:
+      - export KUBE_TOKEN=$$PROD_KUBE_TOKEN
+      - export KUBE_SERVER=$$PROD_KUBE_SERVER
       - kd -f deployment.yml
     secrets:
       - PROD_KUBE_TOKEN
