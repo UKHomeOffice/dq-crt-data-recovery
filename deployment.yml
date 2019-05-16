@@ -21,19 +21,19 @@ spec:
         securityContext:
           runAsNonRoot: true
         volumeMounts:
-          - mountPath: /mnt/pvc-jira-crt
-            name: pvc-jira-crt
-          # - mountPath: /mnt/pvc-jira-crt2
-          #   name: pvc-jira-crt2
-          - mountPath: /mnt/pvc-jira-dc-crt
-            name: pvc-jira-dc-crt
+          # - mountPath: /mnt/pvc-jira-crt
+          #   name: pvc-jira-crt
+          - mountPath: /mnt/pvc-jira-crt2
+            name: pvc-jira-crt2
+          # - mountPath: /mnt/pvc-jira-dc-crt
+          #   name: pvc-jira-dc-crt
       volumes:
-        - name: pvc-jira-crt
-          persistentVolumeClaim:
-            claimName: pvc-jira-crt
-        # - name: pvc-jira-crt2
+        # - name: pvc-jira-crt
         #   persistentVolumeClaim:
-        #     claimName: pvc-jira-crt2
-        - name: pvc-jira-dc-crt
+        #     claimName: pvc-jira-crt
+        - name: pvc-jira-crt2
           persistentVolumeClaim:
-            claimName: pvc-jira-dc-crt
+            claimName: pvc-jira-crt2
+        # - name: pvc-jira-dc-crt
+        #   persistentVolumeClaim:
+        #     claimName: pvc-jira-dc-crt
