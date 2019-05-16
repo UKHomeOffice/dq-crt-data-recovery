@@ -1,0 +1,40 @@
+pipeline:
+  build_image:
+    image: ukhomeoffice/drone-docker
+    repo: quay.io/ukhomeofficedigital/dq-crt-data-recovery
+    secrets: [ docker_username, docker_password ]
+    registry: quay.io
+    dockerfile: Dockerfile
+    when:
+      event: push
+
+  deploy_to_notprod:
+    image: quay.io/ukhomeofficedigital/kd
+    environment:
+      - KUBE_NAMESPACE=dq-apps-notprod
+      - INSECURE_SKIP_TLS_VERIFY=true
+    commands:
+      - export KUBE_TOKEN=$$NOTPROD_KUBE_TOKEN
+      - export KUBE_SERVER=$$NOTPROD_KUBE_SERVER
+      - kd -f deployment.yml
+    secrets:
+      - NOTPROD_KUBE_TOKEN
+      - NOTPROD_KUBE_SERVER
+    when:
+      event: push
+
+  deploy_to_prod:
+    image: quay.io/ukhomeofficedigital/kd
+    environment:
+      - KUBE_NAMESPACE=dq-apps-prod
+      - INSECURE_SKIP_TLS_VERIFY=true
+    commands:
+      - export KUBE_TOKEN=$$PROD_KUBE_TOKEN
+      - export KUBE_SERVER=$$PROD_KUBE_SERVER
+      - kd -f deployment.yml
+    secrets:
+      - PROD_KUBE_TOKEN
+      - PROD_KUBE_SERVER
+    when:
+      branch: master
+      event: push

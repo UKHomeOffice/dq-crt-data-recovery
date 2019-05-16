@@ -1,0 +1,29 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dq-crt-data-recovery
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      labels:
+        name: dq-crt-data-recovery
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+      - name: dq-crt-data-recovery
+        image: quay.io/ukhomeofficedigital/dq-crt-data-recovery
+        imagePullPolicy: Always
+        securityContext:
+          runAsNonRoot: true
+        volumeMounts:
+          - mountPath: /mnt/pvc-jira-crt2
+            name: pvc-jira-crt2
+      volumes:
+        - name: pvc-jira-crt2
+          persistentVolumeClaim:
+            claimName: pvc-jira-crt2
