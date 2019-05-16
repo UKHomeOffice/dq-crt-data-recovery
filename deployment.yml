@@ -23,8 +23,8 @@ spec:
         volumeMounts:
           - mountPath: /mnt/pvc-jira-crt
             name: pvc-jira-crt
-          - mountPath: /mnt/pvc-jira-crt2
-            name: pvc-jira-crt2
+          # - mountPath: /mnt/pvc-jira-crt2
+          #   name: pvc-jira-crt2
           - mountPath: /mnt/pvc-jira-dc-crt
             name: pvc-jira-dc-crt
       volumes:
