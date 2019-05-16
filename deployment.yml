@@ -15,7 +15,7 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
       containers:
-      - name: jira
+      - name: dq-crt-data-recovery
         image: quay.io/ukhomeofficedigital/dq-crt-data-recovery
         imagePullPolicy: Always
         securityContext:
