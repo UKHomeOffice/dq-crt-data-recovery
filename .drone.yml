@@ -10,6 +10,8 @@ pipeline:
 
   deploy_to_notprod:
     image: quay.io/ukhomeofficedigital/kd
+    environment:
+      - KUBE_NAMESPACE=dq-apps-notprod
     commands:
       - kd -f deployment.yml
     secrets:
@@ -20,6 +22,8 @@ pipeline:
 
   deploy_to_prod:
     image: quay.io/ukhomeofficedigital/kd
+    environment:
+      - KUBE_NAMESPACE=dq-apps-prod
     commands:
       - kd -f deployment.yml
     secrets:
