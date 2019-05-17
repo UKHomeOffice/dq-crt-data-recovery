@@ -8,6 +8,6 @@ RUN yum install -y python \
 RUN groupadd -r runner && \
   useradd --no-log-init -u $USERMAP_UID -r -g runner runner && \
   groupadd docker && \
-  usermod -aG docker runner && \  
+  usermod -aG docker runner
 USER ${USERMAP_UID}
 CMD ["/usr/sbin/init"]
