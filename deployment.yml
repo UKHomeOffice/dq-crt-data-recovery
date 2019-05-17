@@ -12,7 +12,6 @@ spec:
         name: dq-crt-data-recovery
     spec:
       securityContext:
-        runAsUser: 1000
         fsGroup: 1000
       containers:
       - name: dq-crt-data-recovery
@@ -20,6 +19,7 @@ spec:
         imagePullPolicy: Always
         securityContext:
           runAsNonRoot: true
+          runAsUser: 1000
         volumeMounts:
           - mountPath: /mnt/pvc-jira-crt2
             name: pvc-jira-crt2
