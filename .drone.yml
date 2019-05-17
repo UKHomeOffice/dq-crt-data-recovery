@@ -26,7 +26,7 @@ pipeline:
   deploy_to_prod:
     image: quay.io/ukhomeofficedigital/kd
     environment:
-      - KUBE_NAMESPACE=dq-apps-prod
+      - KUBE_NAMESPACE=dq-apps
       - INSECURE_SKIP_TLS_VERIFY=true
     commands:
       - export KUBE_TOKEN=$$PROD_KUBE_TOKEN
